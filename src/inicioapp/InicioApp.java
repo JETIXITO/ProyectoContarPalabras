@@ -5,6 +5,11 @@
  */
 package inicioapp;
 
+/**
+ *
+ * @author Denis Marian Manta
+ */
+
 import java.util.Scanner;
 
 public class InicioApp {
