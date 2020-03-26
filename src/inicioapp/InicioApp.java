@@ -10,7 +10,7 @@ import java.util.Scanner;
 public class InicioApp {
 
 	int [] contador;
-	char [] letras;
+	//char [] letras;
 	int palabras;
 	int numCaracteresSinBlancos = 0;
 	final String TEXTO_LETRAS= "Las letras que se repiten son:";
@@ -22,15 +22,13 @@ public class InicioApp {
 	
 	public InicioApp(){
 		contador = new int[65536];
-		letras = new char[65536];
 		palabras = 1;
 	}
 	
         private int contarCaracteresTotal(String cadena){
             for (int i = 0;i<cadena.length();i++){ //recorro la cadena
-			char car = cadena.charAt(i); //obtengo el valor de la posición de i en la cadena
-			int ascii = car; //¿Esto qué es?
-                        if (car != ' ') numCaracteresSinBlancos++; //Aumento el contador de caracteres no blancos
+		char car = cadena.charAt(i); //obtengo el valor de la posición de i en la cadena
+                if (car != ' '){ numCaracteresSinBlancos++;}//Aumento el contador de caracteres no blancos
             }
             return numCaracteresSinBlancos;
         }
@@ -69,12 +67,13 @@ public class InicioApp {
         
         private String textoTodosCaracteres(int [] contador){
             System.out.println(TEXTO_LETRAS);
-		for (int i = 0;i<letras.length;i++) { //Recorro el array y muestro todo.
-			if (contador[i]>0 && letras[i] != ' ') {
+		for (int i = 0;i<contador.length;i++) { //Recorro el array y muestro todo.
+                        char letra = (char) i;
+			if (contador[i]>0 && letra != ' ') {
 				if (contador[i]==1)
-					System.out.println(""+letras[i]+ "-->" + contador[i] + " vez.");
+					System.out.println(""+letra+ "-->" + contador[i] + " vez.");
 				else
-					System.out.println(""+letras[i]+ "-->" + contador[i] + " veces.");
+					System.out.println(""+letra+ "-->" + contador[i] + " veces.");
                 }
                         
             }
@@ -86,9 +85,6 @@ public class InicioApp {
 		Scanner scan = new Scanner(System.in);
 		System.out.println(TEXTO_PEDIR_CADENA);
 		String cadena = scan.nextLine();
-		ia.contarCaracteresTotal(cadena);
-                ia.contarNumerosPalabras(cadena);
-                ia.contarTodosCaracteres(cadena);
 		ia.textoCaracteresTotal(ia.contarCaracteresTotal(cadena));
                 ia.textoNumeroPalabras(ia.contarNumerosPalabras(cadena));
                 ia.textoTodosCaracteres(ia.contarTodosCaracteres(cadena));
